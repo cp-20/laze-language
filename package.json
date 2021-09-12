@@ -1,0 +1,25 @@
+{
+    "name": "laze-language",
+    "displayName": "Laze Language",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "laze",
+            "aliases": ["Laze Language", "laze"],
+            "extensions": [".laze"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "laze",
+            "scopeName": "src.laze",
+            "path": "./syntaxes/laze.tmLanguage.json"
+        }]
+    }
+}
