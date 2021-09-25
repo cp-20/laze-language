@@ -1,25 +1,64 @@
 {
-    "name": "laze-language",
-    "displayName": "Laze Language",
-    "description": "",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.46.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "contributes": {
-        "languages": [{
-            "id": "laze",
-            "aliases": ["Laze Language", "laze"],
-            "extensions": [".laze"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "laze",
-            "scopeName": "src.laze",
-            "path": "./syntaxes/laze.tmLanguage.json"
-        }]
-    }
+	"name": "laze-language",
+	"displayName": "Laze Language",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:laze"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "laze",
+				"aliases": [
+					"Laze",
+					"laze"
+				],
+				"extensions": [
+					".laze"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"semanticTokenTypes": [
+			{
+				"id": "default",
+				"superType": "keyword",
+				"description": "A default keyword."
+			}
+		],
+		"semanticTokenScopes": [
+			{
+				"language": "laze",
+				"scopes": {
+					"default": [
+						"storage"
+					]
+				}
+			}
+		],
+		"configurationDefaults": {
+			"[laze]": {
+				"editor.semanticHighlighting.enabled": true,
+				"editor.wordSeparators": "`~!@#$%^&*()-=+[{]}|;:'\",.<>/?「」＆＊（）＝＋［｛］｝：’”、。＜＞"
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint . --ext .ts,.tsx",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.60.0",
+		"typescript": "^4.4.3"
+	}
 }
